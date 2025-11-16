@@ -1,20 +1,11 @@
-import { useAuthStore } from "./authStore";
+import { useCounterStore } from "./counterStore";
+export default function Counter(){
+  const {count, increase} = useCounterStore();
 
-export default function App() {
-  const { user, login, logout } = useAuthStore();
-
-  return (
+  return(
     <div>
-      <h1>Zustand Middleware Example</h1>
-
-      {user ? (
-        <>
-          <h2>Welcome, {user.name}</h2>
-          <button onClick={logout}>Logout</button>
-        </>
-      ) : (
-        <button onClick={() => login("Guest")}>Login as Guest</button>
-      )}
+      <h2>Count: {count}</h2>
+      <button onClick={increase}>Increase</button>
     </div>
-  );
+  )
 }
